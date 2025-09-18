@@ -1,4 +1,52 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Gamified Lessons</title><link rel="stylesheet" href="style.css"><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="style.css">
-</head><body class="lessons-page"><header class="topbar"><div class="container topbar-inner"><div class="brand">DisasterReady</div><nav class="nav"><a href="student-dashboard.html">← Dashboard</a></nav></div></header><main class="container"><h1 class="page-heading">Gamified Lessons</h1><p class="muted">Click any lesson to read its full content.</p><div id="lessonsGrid" class="lessons-grid"></div></main><footer class="site-footer"><div class="container">© <span id="yearLesson"></span> DisasterReady</div></footer><script src="app.js"></script><script>document.getElementById('yearLesson').textContent = new Date().getFullYear(); renderLessons();</script></body></html>
+</head><body class="lessons-page">
+  <h1>🌈 Gamified Lessons</h1>
+  <p class="subtitle">Click any lesson to read its full content.</p>
+
+  <div class="lessons-grid">
+    <div class="lesson-card">
+      <i class="fas fa-exclamation-triangle"></i>
+      <h2>Lesson 1: What is a Disaster?</h2>
+      <a href="lesson1.html" class="lesson-btn">Open Lesson</a>
+    </div>
+
+    <div class="lesson-card">
+      <i class="fas fa-house-damage"></i>
+      <h2>Lesson 2: Earthquake Safety</h2>
+      <a href="lesson2.html" class="lesson-btn">Open Lesson</a>
+    </div>
+
+    <div class="lesson-card">
+      <i class="fas fa-water"></i>
+      <h2>Lesson 3: Flood Safety</h2>
+      <a href="lesson3.html" class="lesson-btn">Open Lesson</a>
+    </div>
+
+    <div class="lesson-card">
+      <i class="fas fa-fire-extinguisher"></i>
+      <h2>Lesson 4: Fire Safety</h2>
+      <a href="lesson4.html" class="lesson-btn">Open Lesson</a>
+    </div>
+
+    <div class="lesson-card">
+      <i class="fas fa-temperature-high"></i>
+      <h2>Lesson 5: Heatwave Safety</h2>
+      <a href="lesson5.html" class="lesson-btn">Open Lesson</a>
+    </div>
+
+    <div class="lesson-card">
+      <i class="fas fa-virus"></i>
+      <h2>Lesson 6: Pandemic Safety</h2>
+      <a href="lesson6.html" class="lesson-btn">Open Lesson</a>
+    </div>
+
+    <div class="lesson-card">
+      <i class="fas fa-flask"></i>
+      <h2>Lesson 7: Lab & Chemical Safety</h2>
+      <a href="lesson7.html" class="lesson-btn">Open Lesson</a>
+    </div>
+  </div>
+</body>
+</html>
