@@ -1,1 +1,33 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Student Dashboard</title><link rel="stylesheet" href="style.css"></head><body class="dashboard-page"><header class="topbar"><div class="container topbar-inner"><div class="brand">DisasterReady</div><div class="right"><span id="welcome-email" class="welcome-email"></span><a class="btn-small" href="index.html">Home</a></div></div></header><main class="container"><h1 class="page-heading">Student Dashboard</h1><section class="dashboard-tiles"><a class="tile-link" href="lessons.html"><div class="tile"><div class="tile-icon">🎮</div><h3>Gamified Lessons</h3><p>7 short, practical lessons.</p></div></a><a class="tile-link" href="quiz.html"><div class="tile"><div class="tile-icon">📝</div><h3>Quizzes</h3><p>Interactive quizzes to test knowledge.</p></div></a><a class="tile-link" href="badges.html"><div class="tile"><div class="tile-icon">🏅</div><h3>Badges</h3><p>Your earned badges.</p></div></a><a class="tile-link" href="drills.html"><div class="tile"><div class="tile-icon">🚨</div><h3>Drills</h3><p>Practice simulations.</p></div></a></section><section id="content-area" class="content-area"><p class="muted">Click a tile above to open that section.</p></section></main><script src="app.js"></script><script>const se = localStorage.getItem('studentEmail'); document.getElementById('welcome-email').textContent = se ? `Signed in as ${se}` : '';</script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Student Dashboard</title><link rel="stylesheet" href="style.css"></head><body>
+  <h1>Welcome Student 👩‍🎓</h1>
+  <div class="dashboard">
+    <div class="card">
+      <i class="fas fa-gamepad"></i>
+      <h2>Gamified Lessons 🌱</h2>
+      <p>Learn disaster preparedness through fun lessons.</p>
+      <a href="gamified-lessons.html"><button>Explore</button></a>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-question-circle"></i>
+      <h2>Quizzes 📚</h2>
+      <p>Test your knowledge with interactive quizzes.</p>
+      <a href="quiz.html"><button>Start</button></a>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-trophy"></i>
+      <h2>Badges 🏆</h2>
+      <p>See badges you’ve earned.</p>
+      <a href="badges.html"><button>View</button></a>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-bullhorn"></i>
+      <h2>Drills 🚨</h2>
+      <p>Participate in real-life drill simulations.</p>
+      <a href="drills.html"><button>Join</button></a>
+    </div>
+  </div>
+</body>
+</html>
