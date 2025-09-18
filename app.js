@@ -1,0 +1,20 @@
+const LESSONS = [
+`<h3>Goal</h3><p>Learn what disasters are and why we should know about them.</p> ...`,
+`<h3>Goal</h3><p>Earthquake safety summary...</p>`,
+`<h3>Goal</h3><p>Flood safety summary...</p>`,
+`<h3>Goal</h3><p>Fire safety summary...</p>`,
+`<h3>Goal</h3><p>Heatwave safety summary...</p>`,
+`<h3>Goal</h3><p>Pandemic safety summary...</p>`,
+`<h3>Goal</h3><p>Lab & chemical safety summary...</p>`
+];
+
+function getLessonTitle(i){
+  const titles=["Lesson 1: What is a Disaster?","Lesson 2: Earthquake Safety","Lesson 3: Flood Safety","Lesson 4: Fire Safety","Lesson 5: Heatwave Safety","Lesson 6: Pandemic Safety","Lesson 7: Lab & Chemical Safety"];
+  return titles[i]||`Lesson ${i+1}`;
+}
+function renderLessons(){ const grid=document.getElementById('lessonsGrid'); if(!grid) return; grid.innerHTML=''; for(let i=0;i<LESSONS.length;i++){ const a=document.createElement('a'); a.className='lesson-card-link'; a.href='lesson.html?id='+i; a.innerHTML=`<div class="lesson-card"><h4>${getLessonTitle(i)}</h4><p>Click to open lesson ${i+1} — read and mark complete.</p></div>`; grid.appendChild(a);}}
+function loadLessonById(id){ const titleEl=document.getElementById('lesson-title'); const bodyEl=document.getElementById('lesson-body'); if(!bodyEl) return; if(typeof id!=='number'||id<0||id>=LESSONS.length){ if(titleEl) titleEl.textContent='Lesson not found'; bodyEl.innerHTML='<p>Lesson not available.</p>'; return;} if(titleEl) titleEl.textContent=getLessonTitle(id); bodyEl.innerHTML=LESSONS[id]; }
+function loginStudent(e){ if(e&&e.preventDefault) e.preventDefault(); const email=document.getElementById('email').value.trim(); const name=document.getElementById('name').value.trim(); if(!email||!name){ alert('Please fill name and email'); return; } localStorage.setItem('studentEmail', email); const studentKey='studentProfile_'+email; const profile=JSON.parse(localStorage.getItem(studentKey)||'null'); if(!profile){ localStorage.setItem(studentKey, JSON.stringify({name:name,email:email})); } const scores=JSON.parse(localStorage.getItem('studentScores')||'{}'); if(!scores[email]) scores[email]={score:0,attended:0,correct:0,wrong:0,lessons:[]}; localStorage.setItem('studentScores', JSON.stringify(scores)); const list=JSON.parse(localStorage.getItem('studentList')||'[]'); if(!list.find(s=>s.email===email)){ list.push({name:name,email:email}); localStorage.setItem('studentList', JSON.stringify(list)); } window.location.href='student-dashboard.html'; }
+function loginTeacher(e){ if(e&&e.preventDefault) e.preventDefault(); window.location.href='teacher-dashboard.html'; }
+function renderTeacherTable(){ const tbody=document.querySelector('#studentsTable tbody'); if(!tbody) return; tbody.innerHTML=''; const list=JSON.parse(localStorage.getItem('studentList')||'[]'); const scores=JSON.parse(localStorage.getItem('studentScores')||'{}'); list.forEach(s=>{ const tr=document.createElement('tr'); const sc=scores[s.email]||{score:0,lessons:[]}; tr.innerHTML=`<td>${s.name}</td><td>${s.email}</td><td>${sc.score||0}</td><td>${(sc.lessons?sc.lessons.length:0)}</td><td><button class="btn btn-small" onclick="viewStudent('${s.email.replace(/'/g,"\\'")}')">View</button></td>`; tbody.appendChild(tr); }); }
+function viewStudent(email){ const detail=document.getElementById('studentDetail'); const profile=JSON.parse(localStorage.getItem('studentProfile_'+email)||'null'); const scores=JSON.parse(localStorage.getItem('studentScores')||'{}')[email]||{score:0,attended:0,correct:0,wrong:0,lessons:[]}; if(!detail) return; detail.innerHTML=`<h3>Student: ${profile?profile.name:email}</h3><p>Email: ${email}</p><p>Quiz score: ${scores.score||0}</p><p>Attended: ${scores.attended||0}</p><p>Correct: ${scores.correct||0}</p><p>Wrong: ${scores.wrong||0}</p><p>Lessons completed: ${(scores.lessons||[]).map(i=>getLessonTitle(i)).join(', ')||'None'}</p>`; }
